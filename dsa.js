@@ -342,7 +342,7 @@ console.log(largestSubarrayWithEqualZeroOne([1, 1, 1, 1]));
 // Reverse Words in a String
 
 function reverseWords(str) {
-    debugger
+  debugger;
   let word = '',
     reversed = '';
   for (let i = 0; i < str.length; i++) {
@@ -358,3 +358,21 @@ function reverseWords(str) {
 }
 
 console.log(reverseWords('React is awesome'));
+
+function debounce(fn, delay) {
+  let timer;
+  return function (...args) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), delay);
+  };
+}
+
+function throttle(fn, delay) {
+  let lastCall = 0;
+  return function (...args) {
+    const now = Date.now();
+    if (now - lastCall < delay) return;
+    fn(...args);
+    lastCall = now;
+  };
+}
