@@ -332,9 +332,29 @@ function largestSubarrayWithEqualZeroOne(arr) {
       map.set(sum, i);
     }
   }
-  return maxLen
+  return maxLen;
 }
 
 console.log(largestSubarrayWithEqualZeroOne([1, 0, 1, 1, 0, 0, 1])); // 6
 console.log(largestSubarrayWithEqualZeroOne([1, 1, 1, 0, 0, 0])); // 6
 console.log(largestSubarrayWithEqualZeroOne([1, 1, 1, 1]));
+
+// Reverse Words in a String
+
+function reverseWords(str) {
+    debugger
+  let word = '',
+    reversed = '';
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== ' ') {
+      word = str[i] + word;
+    } else {
+      reversed = reversed + word + ' ';
+      word = '';
+    }
+  }
+  reversed += word;
+  return reversed;
+}
+
+console.log(reverseWords('React is awesome'));
