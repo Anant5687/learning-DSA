@@ -388,3 +388,28 @@ function reverseString(str) {
 }
 
 console.log(reverseString('React'));
+
+// 22. Check if two strings are anagrams
+
+function strToObj(str) {
+  let obj = {};
+
+  for (let key of str) {
+    if (!obj[key]) obj[key] = 1;
+    else obj[key]++;
+  }
+  return obj;
+}
+
+function checkAnagrams(str1, str2) {
+  let obj1 = strToObj(str1);
+  let obj2 = strToObj(str2);
+
+  for (let ch in obj1) {
+    if (obj1[ch] !== obj2[ch]) return false;
+  }
+  return true;
+}
+console.log(checkAnagrams("listen", "silent"))
+console.log(checkAnagrams("anagram", "nagaram"))
+console.log(checkAnagrams("rat", "car"))
