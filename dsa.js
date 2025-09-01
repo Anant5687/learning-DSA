@@ -453,12 +453,12 @@ console.log(firstNonRepeating('leetcode'));
 
 // 25. Count the occurrence of a given character
 
-function countOccurence (str, char){
+function countOccurence(str, char) {
   let obj = strToObj(str);
-  for(let ch in obj){
- if(ch === char) return obj[ch]
+  for (let ch in obj) {
+    if (ch === char) return obj[ch];
   }
 
-  return -1
+  return -1;
 }
-console.log(countOccurence("banana" , "a"))
+console.log(countOccurence('banana', 'a'));
