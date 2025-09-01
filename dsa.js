@@ -433,3 +433,20 @@ function allPermutations(str) {
 }
 
 console.log(allPermutations('ab'));
+
+// 24. Find the first non-repeating character
+
+function firstNonRepeating(str) {
+  let obj = {};
+  for (let key of str) {
+    if (!obj[key]) obj[key] = 1;
+    else obj[key]++;
+  }
+
+  for (let ch in obj) {
+    if (obj[ch] === 1) return ch;
+  }
+  return -1;
+}
+
+console.log(firstNonRepeating('leetcode'));
