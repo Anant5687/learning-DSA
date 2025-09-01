@@ -410,6 +410,26 @@ function checkAnagrams(str1, str2) {
   }
   return true;
 }
-console.log(checkAnagrams("listen", "silent"))
-console.log(checkAnagrams("anagram", "nagaram"))
-console.log(checkAnagrams("rat", "car"))
+console.log(checkAnagrams('listen', 'silent'));
+console.log(checkAnagrams('anagram', 'nagaram'));
+console.log(checkAnagrams('rat', 'car'));
+
+// 23. Find all permutations of a string
+
+function allPermutations(str) {
+  if (str.length === 0) return [''];
+  let result = [];
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    let remaining = str.slice(0, i) + str.slice(i + 1);
+
+    let words = allPermutations(remaining);
+    for (let word of words) {
+      result.push(char + word);
+    }
+  }
+
+  return result;
+}
+
+console.log(allPermutations('ab'));
