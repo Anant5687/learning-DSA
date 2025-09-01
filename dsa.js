@@ -462,3 +462,41 @@ function countOccurence(str, char) {
   return -1;
 }
 console.log(countOccurence('banana', 'a'));
+
+// 26. Remove duplicate characters from a string
+
+function removeDuplicate(str) {
+  let map = new Map();
+  let newStr = '';
+
+  for (let i = 0; i < str.length; i++) {
+    if (!map.has(str[i])) {
+      newStr += str[i];
+      map.set(str[i]);
+    }
+  }
+  return { newStr };
+}
+
+console.log(removeDuplicate('programming'));
+
+// 27. Check if a string is a palindrome
+
+function isPalindrone(str) {
+  let i = 0,
+    j = str.length - 1;
+
+  while (i < j) {
+    if (str[i].toLowerCase() === str[j].toLowerCase()) {
+      i++;
+      j--;
+    } else if (str[i].toLowerCase() !== str[j].toLowerCase()) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(isPalindrone("madam"))
+console.log(isPalindrone("racecar"))
+console.log(isPalindrone("hello"))
