@@ -410,6 +410,55 @@ function checkAnagrams(str1, str2) {
   }
   return true;
 }
-console.log(checkAnagrams("listen", "silent"))
-console.log(checkAnagrams("anagram", "nagaram"))
-console.log(checkAnagrams("rat", "car"))
+console.log(checkAnagrams('listen', 'silent'));
+console.log(checkAnagrams('anagram', 'nagaram'));
+console.log(checkAnagrams('rat', 'car'));
+
+// 23. Find all permutations of a string
+
+function allPermutations(str) {
+  if (str.length === 0) return [''];
+  let result = [];
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    let remaining = str.slice(0, i) + str.slice(i + 1);
+
+    let words = allPermutations(remaining);
+    for (let word of words) {
+      result.push(char + word);
+    }
+  }
+
+  return result;
+}
+
+console.log(allPermutations('ab'));
+
+// 24. Find the first non-repeating character
+
+function firstNonRepeating(str) {
+  let obj = {};
+  for (let key of str) {
+    if (!obj[key]) obj[key] = 1;
+    else obj[key]++;
+  }
+
+  for (let ch in obj) {
+    if (obj[ch] === 1) return ch;
+  }
+  return -1;
+}
+
+console.log(firstNonRepeating('leetcode'));
+
+// 25. Count the occurrence of a given character
+
+function countOccurence(str, char) {
+  let obj = strToObj(str);
+  for (let ch in obj) {
+    if (ch === char) return obj[ch];
+  }
+
+  return -1;
+}
+console.log(countOccurence('banana', 'a'));
