@@ -558,3 +558,29 @@ console.log(longestPrefix(['a']));
 console.log(longestPrefix(['dog', 'racecar', 'car']));
 console.log(longestPrefix(['interspecies', 'interstellar', 'interstate']));
 
+// 32. Check if a string is a valid shuffle of two distinct strings
+function validShuffle(str1, str2, strResult) {
+  let i = 0,
+    j = 0,
+    k = 0,
+    f = 0;
+
+  if (str1.length + str2.length !== strResult.length) {
+    return false;
+  }
+
+  while (k < strResult.length) {
+    if (i < str1.length && strResult[k] === str1[i]) {
+      i++;
+    } else if (j < str2.length && strResult[k] === str2[j]) {
+      j++;
+    } else {
+      return false;
+    }
+    k++;
+  }
+
+  return i === str1.length && j === str2.length;
+}
+console.log(validShuffle('AB', 'CD', 'ACBD'));
+console.log(validShuffle('AB', 'CD', 'ACBG')); // false
