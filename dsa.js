@@ -584,3 +584,15 @@ function validShuffle(str1, str2, strResult) {
 }
 console.log(validShuffle('AB', 'CD', 'ACBD'));
 console.log(validShuffle('AB', 'CD', 'ACBG')); // false
+
+// 33. Implement strstr() function
+function strstr(hayStack, needle) {
+  debugger;
+  for (let i = 0; i < hayStack.length - needle.length; i++) {
+    const sliced = hayStack.slice(i, i + needle.length);
+    if (sliced === needle) return i;
+  }
+  return -1;
+}
+
+console.log(strstr('hello', 'll'));
