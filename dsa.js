@@ -462,3 +462,82 @@ function countOccurence(str, char) {
   return -1;
 }
 console.log(countOccurence('banana', 'a'));
+
+// 26. Remove duplicate characters from a string
+
+function removeDuplicates(str) {
+  let map = new Map();
+  let newStr = '';
+  for (let i = 0; i < str.length; i++) {
+    if (!map.has(str[i])) {
+      newStr += str[i];
+      map.set(str[i]);
+    }
+  }
+  return newStr;
+}
+
+console.log(removeDuplicates('banana'));
+console.log(removeDuplicates('aabbcc'));
+console.log(removeDuplicates('abc'));
+
+// 27. Check if a string is a palindrome
+
+function isPalindrome(str) {
+  let i = 0,
+    j = str.length - 1;
+
+  while (i < j) {
+    if (str[i].toLowerCase() !== str[j].toLowerCase()) return false;
+    i++;
+    j--;
+  }
+  return true;
+}
+
+console.log(isPalindrome('madam'));
+console.log(isPalindrome('hello'));
+console.log(isPalindrome('a'));
+
+// 28. Convert a given string into an integer
+
+function convertToNumber(str) {
+  let start = str[0] === '-' ? 1 : 0,
+    sign = str[0] === '-' ? -1 : 1,
+    number = 0;
+
+  for (let i = start; i < str.length; i++) {
+    const digit = str.charCodeAt(i) - 48;
+    if (digit >= 0 && digit <= 9) {
+      number = number * 10 + digit;
+    } else {
+      return 'Nan';
+    }
+  }
+  return { ans: number * sign, type: typeof number };
+}
+console.log(convertToNumber('123')); // 123
+console.log(convertToNumber('-456')); // -456
+console.log(convertToNumber('00123')); // 123
+console.log(convertToNumber('12a3')); // NaN
+
+// 29. Find the longest substring without repeating characters
+function longestSubstr(str) {
+  let longestStr = '';
+  for (let i = 0; i < str.length; i++) {
+    let currentStr = '';
+    let map = new Map();
+    for (let j = i; j < str.length; j++) {
+      if (map.has(str[j])) break;
+      currentStr += str[j];
+      map.set(str[j]);
+
+      if (longestStr.length < currentStr.length) longestStr = currentStr;
+    }
+  }
+  return { lStr: longestStr, lLength: longestStr.length };
+}
+
+console.log(longestSubstr('abcabcbb'));
+console.log(longestSubstr(''));
+console.log(longestSubstr('pwwkew'));
