@@ -508,7 +508,7 @@ function convertToNumber(str) {
 
   for (let i = start; i < str.length; i++) {
     const digit = str.charCodeAt(i) - 48;
-    if (digit >= 0 && digit<= 9) {
+    if (digit >= 0 && digit <= 9) {
       number = number * 10 + digit;
     } else {
       return 'Nan';
@@ -521,4 +521,23 @@ console.log(convertToNumber('-456')); // -456
 console.log(convertToNumber('00123')); // 123
 console.log(convertToNumber('12a3')); // NaN
 
+// 29. Find the longest substring without repeating characters
+function longestSubstr(str) {
+  let longestStr = '';
+  for (let i = 0; i < str.length; i++) {
+    let currentStr = '';
+    let map = new Map();
+    for (let j = i; j < str.length; j++) {
+      if (map.has(str[j])) break;
+      currentStr += str[j];
+      map.set(str[j]);
 
+      if (longestStr.length < currentStr.length) longestStr = currentStr;
+    }
+  }
+  return { lStr: longestStr, lLength: longestStr.length };
+}
+
+console.log(longestSubstr('abcabcbb'));
+console.log(longestSubstr(''));
+console.log(longestSubstr('pwwkew'));
