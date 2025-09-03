@@ -558,3 +558,75 @@ console.log(longestPrefix(['a']));
 console.log(longestPrefix(['dog', 'racecar', 'car']));
 console.log(longestPrefix(['interspecies', 'interstellar', 'interstate']));
 
+// 39. Convert a string to title case
+
+function convertToTileCase(str) {
+  const arr = str.split(' ');
+  let newStr = '';
+
+  for (let i = 0; i < arr.length; i++) {
+    let word = '';
+    for (let j = 0; j < arr[i].length; j++) {
+      if (j == 0) {
+        word = word + arr[i][j].toUpperCase();
+      } else {
+        word += arr[i][j].toLowerCase();
+      }
+    }
+    newStr = newStr + word + ' ';
+  }
+  return newStr;
+}
+
+console.log(convertToTileCase('my name is anant'));
+
+// 36. Check if one string is a rotation of another
+
+function checkRotation(str1, str2) {
+  if (str1.length !== str2.length) return false;
+
+  if (str1 === str2) return true;
+
+  function rotateOnce(str) {
+    let reverse = '';
+    for (let i = 1; i < str.length; i++) {
+      reverse += str[i];
+    }
+    reverse += str[0];
+
+    return reverse;
+  }
+
+  let k = 0;
+
+  while (k < str2.length) {
+    str2 = rotateOnce(str2);
+    if (str1 === str2) return true;
+    k++;
+  }
+  return false;
+}
+
+console.log(checkRotation('waterbottle', 'erbottlewat'));
+console.log(checkRotation('abcd', 'cdab'));
+console.log(checkRotation('abcd', 'acbd'));
+console.log(checkRotation('abc', 'abc'));
+
+// 34. Find the longest repeating subsequence in a string
+
+function longestSubsequence(str) {}
+
+// 35. Remove all adjacent duplicates in a string
+function removeAdjacent(str) {
+  let stack = [];
+  for (let i = 0; i < str.length; i++) {
+    if (stack.length && stack[stack.length - 1] === str[i]) stack.pop();
+    else stack.push(str[i]);
+  }
+
+  return { res: stack.join('') };
+}
+
+console.log(removeAdjacent('abbaca'));
+console.log(removeAdjacent('cbbd'));
+console.log(removeAdjacent('c'));
