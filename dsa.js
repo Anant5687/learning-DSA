@@ -611,3 +611,22 @@ console.log(checkRotation('waterbottle', 'erbottlewat'));
 console.log(checkRotation('abcd', 'cdab'));
 console.log(checkRotation('abcd', 'acbd'));
 console.log(checkRotation('abc', 'abc'));
+
+// 34. Find the longest repeating subsequence in a string
+
+function longestSubsequence(str) {}
+
+// 35. Remove all adjacent duplicates in a string
+function removeAdjacent(str) {
+  let stack = [];
+  for (let i = 0; i < str.length; i++) {
+    if (stack.length && stack[stack.length - 1] === str[i]) stack.pop();
+    else stack.push(str[i]);
+  }
+
+  return { res: stack.join('') };
+}
+
+console.log(removeAdjacent('abbaca'));
+console.log(removeAdjacent('cbbd'));
+console.log(removeAdjacent('c'));
